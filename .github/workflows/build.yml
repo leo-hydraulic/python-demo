@@ -1,0 +1,38 @@
+name: Flutter Build
+
+on: [workflow_dispatch, workflow_call]
+jobs:
+  build:
+    strategy:
+      fail-fast: false  
+      matrix:
+        include:
+          - arch: aarch64
+            os: macos-11
+            target: macos
+            lipo-arch: arm64
+          - arch: amd64
+            os: macos-11
+            target: macos
+            lipo-arch: x86_64
+         
+    name: ${{ matrix.target }} ${{ matrix.arch }}
+    runs-on: ${{ matrix.os }} 
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Build
+        run: ./build.sh
+      
+      - if: ${{ matrix.target == 'macos' }}
+        name: 'MacOS: Tar results'
+        run: >-
+          tar cvf build-${{ matrix.target }}-${{ matrix.arch }}.tar
+          -C dist/main.app
