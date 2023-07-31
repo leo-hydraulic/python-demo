@@ -1,9 +1,10 @@
 from kivy.app import App
+from kivy.core.window import Window
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
-from kivy.core.window import Window
 
 Window.size = (300, 200)
+
 
 class MainWindow(BoxLayout):
     def __init__(self):
@@ -23,6 +24,6 @@ class MyApp(App):
         return MainWindow()
 
 
-if __name__ == "__main__"
+if __name__ == "__main__":
     app = MyApp()
     app.run()
