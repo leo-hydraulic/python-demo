@@ -10,11 +10,11 @@ jobs:
           - arch: aarch64
             os: macos-11
             target: macos
-            lipo-arch: arm64
+            extra-flags: --target-arch arm64
           - arch: amd64
             os: macos-11
             target: macos
-            lipo-arch: x86_64
+            extra-flags: --target-arch x86_64
          
     name: ${{ matrix.target }} ${{ matrix.arch }}
     runs-on: ${{ matrix.os }} 
@@ -29,7 +29,7 @@ jobs:
           cache: 'pip'
 
       - name: Build
-        run: ./build.sh
+        run: ./build.sh ${{ matrix.extra-flags }}
       
       - if: ${{ matrix.target == 'macos' }}
         name: 'MacOS: Tar results'

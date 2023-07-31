@@ -30,6 +30,6 @@ python -m pip install -r "$SCRIPT_PATH/requirements.txt"
 
 echo Preparing package...
 python -m pip install pyinstaller
-pyinstaller -w --workpath "${SCRIPT_PATH}/build" --distpath "${SCRIPT_PATH}/dist" "${SCRIPT_PATH}/src/main.py"
+pyinstaller -w --workpath "${SCRIPT_PATH}/build" --distpath "${SCRIPT_PATH}/dist" "${SCRIPT_PATH}/src/main.py" $@
 
 echo Packaged into "${SCRIPT_PATH}/dist"
