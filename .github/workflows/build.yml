@@ -36,3 +36,9 @@ jobs:
         run: >-
           tar cvf build-${{ matrix.target }}-${{ matrix.arch }}.tar
           -C dist main.app
+
+      - name: 'Upload Tar'
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-${{ matrix.target }}-${{ matrix.arch }}
+          path: build-${{ matrix.target }}-${{ matrix.arch }}.tar
