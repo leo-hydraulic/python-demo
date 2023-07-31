@@ -35,4 +35,4 @@ jobs:
         name: 'MacOS: Tar results'
         run: >-
           tar cvf build-${{ matrix.target }}-${{ matrix.arch }}.tar
-          -C dist/main.app
+          -C dist main.app
