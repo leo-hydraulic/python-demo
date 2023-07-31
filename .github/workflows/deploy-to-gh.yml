@@ -29,7 +29,21 @@ jobs:
         uses: hydraulic-software/conveyor/actions/build@v10.1
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            LOGGING: trace
         with:
           command: make copied-site          
           signing_key: ${{ secrets.SIGNING_KEY }}
           agree_to_license: 1
+          
+      - name: Dump Conveyor Log
+        uses: hydraulic-software/conveyor/actions/build@v10.1
+        with:
+          command: "--show-log > ./conveyor-log.txt"
+          signing_key: ${{ secrets.SIGNING_KEY }}
+          agree_to_license: 1
+          
+      - name: 'Upload Conveyor Log'
+        uses: actions/upload-artifact@v3
+        with:
+          name: conveyor-log.txt
+          path: ./conveyor-log.txt
