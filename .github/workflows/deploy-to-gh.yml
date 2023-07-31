@@ -24,7 +24,7 @@ jobs:
           path: ./dist
         
       - name: Run Conveyor     
-        uses: hydraulic-software/conveyor/actions/build@v10.1
+        uses: hydraulic-software/conveyor/actions/build@v9.2
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
