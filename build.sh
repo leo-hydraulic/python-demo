@@ -32,4 +32,8 @@ echo Preparing package...
 python -m pip install pyinstaller
 pyinstaller -w --workpath "${SCRIPT_PATH}/build" --distpath "${SCRIPT_PATH}/dist" "${SCRIPT_PATH}/src/main.py" $@
 
+if [[ -n "$(command -v xattr)" ]]; then
+  xattr -c -rs "${SCRIPT_PATH}/dist"
+fi
+
 echo Packaged into "${SCRIPT_PATH}/dist"
