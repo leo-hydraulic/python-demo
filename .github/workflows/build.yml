@@ -33,8 +33,7 @@ jobs:
       - if: ${{ matrix.target == 'macos' }}
         name: 'MacOS: Tar results'
         run: >-
-          tar cvf build-${{ matrix.target }}-${{ matrix.arch }}.tar
-          -C dist main.app
+          tar cvf build-${{ matrix.target }}-${{ matrix.arch }}.tar build
 
       - name: 'Upload Tar'
         uses: actions/upload-artifact@v3
