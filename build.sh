@@ -63,6 +63,7 @@ echo Compiling sources...
 python -m compileall -q -b "$PACKAGE_PATH"
 
 find "$PACKAGE_PATH" -type f -name "*.py" -delete
+find "$PACKAGE_PATH" -type f -name "*.o" -delete
 find "$PACKAGE_PATH" -type d -name "__pycache__" | xargs rm -rf
 
 echo Packaged into $PACKAGE_PATH
