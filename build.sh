@@ -48,7 +48,7 @@ cp -R -P "$PY_HOME/lib/$PY_VER" "$PACKAGE_PATH/lib/"
 cp "$PY_HOME/Python" "$PACKAGE_PATH/libpython.dylib"
 
 # Some files in the Python system lib point to this one, so we recreate it as a symlink.
-ln -s "$PACKAGE_PATH/libpython.dylib" "$PACKAGE_PATH/Python"
+ln -s "libpython.dylib" "$PACKAGE_PATH/Python"
 
 # We're going to replace the system site-packages with the one from the virtual env.
 rm -rf "$PACKAGE_PATH/lib/$PY_VER/site-packages"
